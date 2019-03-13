@@ -1,0 +1,67 @@
+﻿<Window x:Class="City_Generator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:City_Generator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- First Column -->
+        <Border Padding="10">
+            <StackPanel>
+                <!-- Settlement Selection -->
+                <TextBlock Text="Settlement Type"/>
+                <ComboBox x:Name="SettlementCombo" SelectedIndex="0">
+                    <ComboBoxItem>City</ComboBoxItem>
+                    <ComboBoxItem>Town</ComboBoxItem>
+                    <ComboBoxItem>Village</ComboBoxItem>
+                    <ComboBoxItem>Hamlet</ComboBoxItem>
+                </ComboBox>
+
+                <!-- Size Selection -->
+                <Grid Margin="0 10 0 0 " x:Name="SizeSelection">
+                    <!-- Grid Definitions -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Size Selectors -->
+                    <RadioButton x:Name="GeneralRadio" Grid.Column="0" IsChecked="False" Checked="SizeRadio_Check">General</RadioButton>
+                    <RadioButton x:Name="SpecificRadio" Grid.Column="1" Checked="SizeRadio_Check">Specific</RadioButton>
+                </Grid>
+
+                <!-- Size Input -->
+                <Grid Margin="0 10 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="SizeText" Grid.Row="0" Text="Size:" Visibility="Hidden"/>
+                    <ComboBox x:Name="GeneralCombo" Grid.Row="1" Visibility="Hidden"/>
+                    <TextBox x:Name="SpecificTextBox" Grid.Row="1" Visibility="Hidden"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <Button x:Name="GenerateButton" Click="GenerateClick" Grid.Column="0" Height="20" Margin="10 30" VerticalAlignment="Bottom">Generate</Button>
+
+        <StatusBar Grid.ColumnSpan="4" Height="20" Margin="0 10 0 0" VerticalAlignment="Bottom" x:Name="StatusBar"/>
+
+    </Grid>
+
+</Window>
