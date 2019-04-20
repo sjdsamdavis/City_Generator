@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
-namespace City_Generator
+namespace Settlement_Generator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -78,80 +79,4 @@ namespace City_Generator
             return (GeneralRadio.IsChecked.Value || SpecificRadio.IsChecked.Value) && (GeneralCombo.SelectedValue != null || SpecificTextBox.Text != "");
         }
     }
-
-    public abstract class Settlement
-    {
-        protected string[] GeneralSizes = {"Large", "Medium", "Small"};
-        protected int MinSpecificSize = 0;
-        protected int MaxSpecificSize = int.MaxValue;
-        protected bool Church = true;
-        protected Resource[] Resources = {};
-        protected int ResourceCount = 0;
-
-        public string[] GetSizes()
-        {
-            return GeneralSizes;
-        }
-
-        public int GetMinSpecificSize()
-        {
-            return MinSpecificSize;
-        }
-
-        public int GetMaxSpecificSize()
-        {
-            return MinSpecificSize;
-        }
-
-        public bool GetChurch()
-        {
-            return Church;
-        }
-
-        public Resource[] GetResources()
-        {
-            return Resources;
-        }
-
-        public int GetResourceCount()
-        {
-            return ResourceCount;
-        }
-1    }
-
-    public class City : Settlement
-    {
-        public City()
-        {
-            this.GeneralSizes = {"Metropolis", "Standard", "Border"};
-        }
-    }
-
-    public class Hamlet : Settlement
-    {
-        public Hamlet()
-        {
-            this.MinSpecificSize = 1;
-            this.MaxSpecificSize = 100;
-            this.Church = false;
-        }
-    }
-
-    public abstract class Resource
-    {
-        protected string Name = "Resource";
-        protected string Type = "Type";
-
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public string GetType()
-        {
-            return Type;
-        }
-    }
-
-
 }
